@@ -23,3 +23,15 @@ after_success:
   - docker push kulbhushansaxena/multi-server
   - docker push kulbhushansaxena/multi-worker
 
+deploy:
+    edge: true
+    provider: elasticbeanstalk
+    region: ap-southeast-2
+    app: multi-docker
+    env: MultiDocker-env
+    bucket_name: elasticbeanstalk-ap-southeast-2-581695759997
+    bucket_path: docker-multi
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
